@@ -1,17 +1,17 @@
 # Lab01S01
 Curso: Engenharia de Software | Matéria: Laboratório de Desenvolvimento de Software | Trabalho: Laboratório 1
 
-## Hitórias de usuários
-### Sistema de Matrícula
+## Sistema de Matrícula
 
-1. Eu como universidade gostaria de ter uma interface para incluir, alterar e deletar disciplinas do sistema.
-2. Eu como universidade gostaria de ter uma interface para incluir, alterar e deletar professores do sistema.
-3. Eu como universidade gostaria de ter uma interface para incluir, alterar e deletar alunos do sistema.
-4. Eu como usuário gostaria de gerar relatório filtardo por curso, onde me entregará informações as disciplinas e os seus créditos.
-5. Eu como aluno gostaria de ter uma interface que lista as disciplinas do meu curso onde posso fazer a matrícula, em cada semestre eu deverei casatrar no mínimo em quatro disciplicas do tipo obrigatória e  duas do tipo optativa.
-6. Eu como universidade gostaria de poder estipular data de inicio e fim das matrículas, assim como datas de cancelamento dessas matrículas.
-7. Eu como universidade posso permitir que uma disciplina exista no mínimo 3 alunos matrículados.
-8. Eu como universidade posso permitir que uma disciplina exista no máximo 60 alunos matrículados.
-9. Eu como universidade gostaria de de notificar os alunos a cobrança relacionada ao semestre.
-10. Eu como professor gostaria de filtrar por disciplina e gerar relatórios que me retornaram informações dos alunos matriculados na disciplina.
-11. Eu como usuário gostaria de fazer login, logon e logout do sistema.
+| Hitórias de usuário | 
+| ------------------- | 
+| 1. Como **Usuário** devo ser capaz de acessar o sistema através de credenciais únicas, para que eu possa efetuar minhas atividades no sistema. |
+| 2. Como **Usuário** devo ser capaz de consultar os cursos, informações de disciplinas, para que eu fique informado. |
+| 3. Como **Secretaria da Universidade** devo ser capaz de gerenciar os usuários, para que possa criar/remover/atualizar usuários do tipo aluno, professor e membros da secretaria. |
+| 4. Como **Secretaria da Universidade** devo ser capaz de cadastrar o currículo de cada semestre, para que os alunos e os professores tenham acesso. |
+| 5. Como **Secretaria da Universidade** devo ser capaz de gerenciar as informações das disciplinas, para que os alunos e os professores tenham acesso. |
+| 6. Como **Secretaria da Univesidade** devo ser capaz de determinar o período em que as matrículas podem ser efetuadas, para que os alunos possam se matricular. |
+| 7. Como **Aluno** devo ser capaz de consultar ocurrículo e disciplinas disponíveis para meu curso, para que eu possa me organizar minha grade de disciplinas e ficar informado. |
+| 8. Como **Aluno** devo ser capaz de me matricular em 4 disciplinas obrigatórias e 2 optativas de meu interesse, para que eu possa cumprir a carga horária do meu curso. |
+| 9. Como **Aluno** devo ser capaz de cancelar minha matrícula, dentro do período de matrícula, em disciplinas anteriormente selecionadas por mim, para eu ter essa opção caso tenha cometido algum erro no momento da matrícula. |
+| 10. Como **Professor** devo ser capaz de consultar a lista de alunos e as disciplinas em que estão matriculados, para que eu me organize para as aulas e fique informado. |
