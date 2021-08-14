@@ -18,4 +18,8 @@ O Laboratório 1 será um sistema de matrícula de uma universidade.
 
 ## Instruções de utilização
 
+* Link para acessar para modificar o caso de uso
+<https://lucid.app/lucidchart/invitations/accept/inv_ea41386e-4fa6-404c-8360-662499e2fc06?viewport_loc=-153%2C92%2C1958%2C1012%2C.Q4MUjXso07N>
+
+
 
