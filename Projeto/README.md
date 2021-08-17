@@ -17,4 +17,4 @@
 
 
 ### Diagrama de Caso de Uso
-![Use_Case_Diagram](https://user-images.githubusercontent.com/43525534/129487336-c1671008-42dd-4f7d-9b3b-caced2ed1c08.png)
+![Use_Case_Diagram (2)](https://user-images.githubusercontent.com/43525534/129645727-5fe8f2b6-5228-4da7-a858-b083be2ff440.png)
