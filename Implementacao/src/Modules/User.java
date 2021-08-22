@@ -2,7 +2,7 @@ package Modules;
 
 public class User {
 
-    private int id;
+    private Integer id;
     private String name;
     private String email;
     private String password;
@@ -53,4 +53,13 @@ public class User {
     public void setPassword(String password) {
         this.password = password;
     }
+    
+    public Boolean login (String email, String password) {
+    	if(email == this.email && password == this.password) {
+    		return true;
+    	} else {
+    		return false;
+    	}
+    }
+    
 }

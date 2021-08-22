@@ -3,29 +3,18 @@ package Modules;
 import java.util.List;
 
 public class Student extends User {
+	
+    private List<RegisterClass> registeredList;
 
-    private int enrollmentId;
-    private List<Class> classes;
-
-    public Student(int id, String name, String email, String password, int enrollmentId, List<Class> classes) {
+    public Student(int id, String name, String email, String password) {
         super(id, name, email, password);
-        this.enrollmentId = enrollmentId;
-        this.classes = classes;
     }
 
-    public int getEnrollmentId() {
-        return enrollmentId;
+    public void enrollment(RegisterClass register) {
+    	registeredList.add(register);
     }
 
-    public void setEnrollmentId(int enrollmentId) {
-        this.enrollmentId = enrollmentId;
-    }
-
-    public List<Class> getClasses() {
-        return classes;
-    }
-
-    public void setClasses(List<Class> classes) {
-        this.classes = classes;
+    public void cancelEnrollmentId(RegisterClass register) {
+    	registeredList.remove(register);
     }
 }
