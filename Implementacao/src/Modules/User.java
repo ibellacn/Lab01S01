@@ -1,27 +1,23 @@
 package Modules;
 
-public class User {
+import Services.Authenticable;
+
+public class User implements Authenticable{
 
     private Integer id;
     private String name;
     private String email;
     private String password;
+    
+    public User() {
+      
+    }
 
     public User(int id, String name, String email, String password) {
         this.id = id;
         this.name = name;
         this.email = email;
         this.password = password;
-    }
-
-    @Override
-    public String toString() {
-        return "User{" +
-                "id=" + id +
-                ", name='" + name + '\'' +
-                ", email='" + email + '\'' +
-                ", password='" + password + '\'' +
-                '}';
     }
 
     public int getId() {
@@ -60,6 +56,10 @@ public class User {
     	} else {
     		return false;
     	}
+    }
+    
+    public void logout () {
+    	
     }
     
 }
