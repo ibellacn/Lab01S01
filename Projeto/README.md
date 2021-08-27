@@ -18,3 +18,7 @@
 
 ### Diagrama de Caso de Uso
 ![Use_Case_Diagram (3)](https://user-images.githubusercontent.com/43525534/130367241-c6d264f7-e895-4d6b-9e09-48d1e586c520.png)
+
+### Diagrama de Classe
+<img width="538" alt="Lab4" src="https://user-images.githubusercontent.com/43525534/131192641-e8b758d5-39ad-4023-8e2d-1445656c96b0.PNG">
+
