@@ -1,3 +1,5 @@
+CREATE DATABASE  IF NOT EXISTS `enrollment-system` /*!40100 DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci */ /*!80016 DEFAULT ENCRYPTION='N' */;
+USE `enrollment-system`;
 -- MySQL dump 10.13  Distrib 8.0.21, for Win64 (x86_64)
 --
 -- Host: 127.0.0.1    Database: enrollment-system
@@ -27,7 +29,7 @@ CREATE TABLE `course` (
   `NAME` varchar(100) DEFAULT NULL,
   `CREDITS` mediumtext,
   PRIMARY KEY (`ID`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -36,8 +38,35 @@ CREATE TABLE `course` (
 
 LOCK TABLES `course` WRITE;
 /*!40000 ALTER TABLE `course` DISABLE KEYS */;
-INSERT INTO `course` VALUES (1,'Engenharia de Software','1200'),(2,'Pedagogia','1350');
 /*!40000 ALTER TABLE `course` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `course_student`
+--
+
+DROP TABLE IF EXISTS `course_student`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `course_student` (
+  `ID` int unsigned NOT NULL AUTO_INCREMENT,
+  `COURSE_ID` int unsigned DEFAULT NULL,
+  `STUDENT_CPF` varchar(25) DEFAULT NULL,
+  PRIMARY KEY (`ID`),
+  KEY `COURSE_ID` (`COURSE_ID`),
+  KEY `STUDENT_CPF` (`STUDENT_CPF`),
+  CONSTRAINT `course_student_ibfk_1` FOREIGN KEY (`COURSE_ID`) REFERENCES `course` (`ID`),
+  CONSTRAINT `course_student_ibfk_2` FOREIGN KEY (`STUDENT_CPF`) REFERENCES `student` (`CPF`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `course_student`
+--
+
+LOCK TABLES `course_student` WRITE;
+/*!40000 ALTER TABLE `course_student` DISABLE KEYS */;
+/*!40000 ALTER TABLE `course_student` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
@@ -77,7 +106,7 @@ DROP TABLE IF EXISTS `enrollment`;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `enrollment` (
   `ID` int unsigned NOT NULL AUTO_INCREMENT,
-  `STUDENT_CPF` int unsigned DEFAULT NULL,
+  `STUDENT_CPF` varchar(25) DEFAULT NULL,
   `SUBJECT_OFFER_ID` int unsigned DEFAULT NULL,
   PRIMARY KEY (`ID`),
   KEY `STUDENT_CPF` (`STUDENT_CPF`),
@@ -104,10 +133,10 @@ DROP TABLE IF EXISTS `professor`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `professor` (
-  `ID` int unsigned NOT NULL AUTO_INCREMENT,
+  `CPF` varchar(25) NOT NULL,
   `INFO` text,
   `USER_ID` int unsigned DEFAULT NULL,
-  PRIMARY KEY (`ID`),
+  PRIMARY KEY (`CPF`),
   KEY `USER_ID` (`USER_ID`),
   CONSTRAINT `professor_ibfk_1` FOREIGN KEY (`USER_ID`) REFERENCES `user` (`ID`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
@@ -119,6 +148,7 @@ CREATE TABLE `professor` (
 
 LOCK TABLES `professor` WRITE;
 /*!40000 ALTER TABLE `professor` DISABLE KEYS */;
+INSERT INTO `professor` VALUES ('987354','TESTE',7);
 /*!40000 ALTER TABLE `professor` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -135,7 +165,7 @@ CREATE TABLE `semester` (
   `ENROLLMENT_START_DATE` datetime DEFAULT NULL,
   `ENROLLMENT_END_DATE` datetime DEFAULT NULL,
   PRIMARY KEY (`ID`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -144,6 +174,7 @@ CREATE TABLE `semester` (
 
 LOCK TABLES `semester` WRITE;
 /*!40000 ALTER TABLE `semester` DISABLE KEYS */;
+INSERT INTO `semester` VALUES (1,'2/2021','2021-07-19 21:00:00','2021-08-19 21:00:00'),(2,'1/2022','2021-12-01 11:54:02','2022-02-01 15:54:02');
 /*!40000 ALTER TABLE `semester` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -155,7 +186,7 @@ DROP TABLE IF EXISTS `student`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `student` (
-  `CPF` int unsigned NOT NULL AUTO_INCREMENT,
+  `CPF` varchar(25) NOT NULL,
   `USER_ID` int unsigned DEFAULT NULL,
   PRIMARY KEY (`CPF`),
   KEY `USER_ID` (`USER_ID`),
@@ -169,6 +200,7 @@ CREATE TABLE `student` (
 
 LOCK TABLES `student` WRITE;
 /*!40000 ALTER TABLE `student` DISABLE KEYS */;
+INSERT INTO `student` VALUES ('98545',6);
 /*!40000 ALTER TABLE `student` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -209,14 +241,14 @@ CREATE TABLE `subject_offer` (
   `CREATION_DATE` datetime DEFAULT NULL,
   `STATUS` enum('OPEN','CLOSED','CANCELED','FINISHED') DEFAULT NULL,
   `SUBJECT_ID` int unsigned DEFAULT NULL,
-  `PROFESSOR_ID` int unsigned DEFAULT NULL,
+  `PROFESSOR_CPF` varchar(25) DEFAULT NULL,
   `SEMESTER_ID` int unsigned DEFAULT NULL,
   PRIMARY KEY (`ID`),
   KEY `SUBJECT_ID` (`SUBJECT_ID`),
-  KEY `PROFESSOR_ID` (`PROFESSOR_ID`),
+  KEY `PROFESSOR_CPF` (`PROFESSOR_CPF`),
   KEY `SEMESTER_ID` (`SEMESTER_ID`),
   CONSTRAINT `subject_offer_ibfk_1` FOREIGN KEY (`SUBJECT_ID`) REFERENCES `subject` (`ID`),
-  CONSTRAINT `subject_offer_ibfk_2` FOREIGN KEY (`PROFESSOR_ID`) REFERENCES `professor` (`ID`),
+  CONSTRAINT `subject_offer_ibfk_2` FOREIGN KEY (`PROFESSOR_CPF`) REFERENCES `professor` (`CPF`),
   CONSTRAINT `subject_offer_ibfk_3` FOREIGN KEY (`SEMESTER_ID`) REFERENCES `semester` (`ID`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -244,7 +276,7 @@ CREATE TABLE `user` (
   `PASSWORD` char(20) DEFAULT NULL,
   `TYPE` enum('SECRETARY','PROFESSOR','STUDENT') DEFAULT NULL,
   PRIMARY KEY (`ID`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -253,6 +285,7 @@ CREATE TABLE `user` (
 
 LOCK TABLES `user` WRITE;
 /*!40000 ALTER TABLE `user` DISABLE KEYS */;
+INSERT INTO `user` VALUES (5,'Fábio','test@test.com','123test','SECRETARY'),(6,'Leo','test@test.com','123test','STUDENT'),(7,'Gabriela','test@test.com','123test','PROFESSOR');
 /*!40000 ALTER TABLE `user` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -265,5 +298,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2021-08-28 19:09:07
-Apply changes to enrollment-system
+-- Dump completed on 2021-08-29 19:35:56
