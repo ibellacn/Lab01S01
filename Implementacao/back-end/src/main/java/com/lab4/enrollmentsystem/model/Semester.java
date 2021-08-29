@@ -1,22 +1,26 @@
 package com.lab4.enrollmentsystem.model;
 
 import javax.persistence.*;
+import java.util.Date;
 
 @Entity
 @Table(name = "SEMESTER")
-public class Semester {
+public class Semester{
 
     private Integer id;
     private String info;
-    private Long credits;
+    private Date enrollmentStartDate;
+    private Date enrollmentEndDate;
 
     public Semester() {
+
     }
 
-    public Semester(Integer id, String info, Long credits) {
+    public Semester(Integer id, String info, Date enrollmentStartDate, Date enrollmentEndDate) {
         this.id = id;
         this.info = info;
-        this.credits = credits;
+        this.enrollmentStartDate = enrollmentStartDate;
+        this.enrollmentEndDate = enrollmentEndDate;
     }
 
     @Id
@@ -37,12 +41,19 @@ public class Semester {
         this.info = info;
     }
 
-    public Long getCredits() {
-        return credits;
+    public Date getEnrollmentStartDate() {
+        return enrollmentStartDate;
     }
 
-    public void setCredits(Long credits) {
-        this.credits = credits;
+    public void setEnrollmentStartDate(Date enrollmentStartDate) {
+        this.enrollmentStartDate = enrollmentStartDate;
     }
 
+    public Date getEnrollmentEndDate() {
+        return enrollmentEndDate;
+    }
+
+    public void setEnrollmentEndDate(Date enrollmentEndDate) {
+        this.enrollmentEndDate = enrollmentEndDate;
+    }
 }
