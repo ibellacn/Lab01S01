@@ -1,0 +1,21 @@
+{
+  "title": "Matrícule-se já em um dos nossos cursos",
+  "formData": [
+    {
+      "id": "formBasicEmail",
+      "text": "Email",
+      "type": "email",
+      "placeholder": "Coloque seu email"
+    },
+    {
+      "id": "formBasicPassword",
+      "text": "Senha",
+      "type": "password",
+      "placeholder": "Coloque sua senha"
+    }
+  ],
+  "button": {
+    "typeButton": "submit",
+    "text": "Entrar"
+  }
+}

@@ -1,0 +1,20 @@
+{
+  "logo": "Sistema de Matrícula",
+  "links": [
+    {
+      "id": 1,
+      "name": "Alunos",
+      "link": "/alunos"
+    },
+    {
+      "id": 2,
+      "name": "Disciplinas",
+      "link": "/disciplinas"
+    },
+    {
+      "id": 2,
+      "name": "Cursos",
+      "link": "/cursos"
+    }
+  ]
+}

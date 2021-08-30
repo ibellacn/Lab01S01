@@ -1,0 +1,16 @@
+{
+  "title": "Área do Estudante",
+  "initialState": {
+    "id": 0,
+    "name": "Selecione o curso",
+    "credits": 0
+  },
+  "tableHeader": ["id do curso", "Nome do curso", "Creditos"],
+  "subjectsOptions": {
+    "title":"Escolha a matéria que deseja matrícular",
+    "button": {
+      "type": "button",
+      "text": "Adicionar"
+    }
+  }
+}
