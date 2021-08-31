@@ -7,7 +7,7 @@ export async function getStaticProps() {
   if (!data) {
     return {
       notFound: true,
-    }
+    };
   }
 
   const res2 = await fetch("http://localhost:8080/subject");
@@ -16,7 +16,7 @@ export async function getStaticProps() {
   if (!data2) {
     return {
       notFound: true,
-    }
+    };
   }
 
   return {
@@ -26,10 +26,12 @@ export async function getStaticProps() {
       tableHeader: Students.tableHeader,
       data,
       titleSubject: Students.subjectsOptions.title,
+      headerTableSubject: Students.headerTable,
+      items: Students.items,
       buttonSubject: Students.subjectsOptions.button,
-      data2
+      data2,
     },
-  }
+  };
 }
 
 export { default } from "containers/Students";

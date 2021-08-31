@@ -17,10 +17,48 @@ export const ContentSubject = styled.div`
   justify-content: space-between;
 `;
 
-export const ContentTable  = styled.div`
+export const WrapperDropdown = styled.div`
+  width: 37%;
+`;
+
+export const SelectItems = styled.div`
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+`;
+
+export const ContentTable = styled.div`
   display: flex;
   flex-direction: column;
   width: 70%;
+`;
+
+export const WrapperTableHeader = styled.div`
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  border: 1px solid;
+`;
+
+export const HeaderTable = styled.div`
+  border-left: 1px solid;
+  border-right: 1px solid;
+  border-top: 1px solid;
+  width: 100%;
+  padding-left: 5px;
+  font-weight: bold;
+  font-size: 18px;
+  :nth-child(1) {
+    max-width: 43%;
+  }
+  :nth-child(2) {
+    max-width: 43%;
+  }
+  :nth-child(3) {
+    max-width: 18%;
+  }
 `;
 
 export const WrapperTable = styled.div`

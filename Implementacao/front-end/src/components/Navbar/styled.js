@@ -9,6 +9,7 @@ export const WrapperNavBar = styled.div`
   justify-content: space-between;
   align-items: center;
   padding: 0px 3%;
+  z-index: 99;
 `;
 
 export const LineHeader = styled.div`
@@ -17,7 +18,7 @@ export const LineHeader = styled.div`
   height: 10px;
   background: #357a38;
   flex-direction: row;
-  z-index: 1;
+  z-index: 100;
 `;
 
 export const WrapperLogo = styled.div`
@@ -35,7 +36,7 @@ export const WrapperLogo = styled.div`
 export const WrapperMenu = styled.div`
   font-size: 21px;
   a {
-    color:#1769aa;
+    color: #1769aa;
     :hover {
       color: #ffffff;
     }

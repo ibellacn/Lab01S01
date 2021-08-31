@@ -2,7 +2,8 @@ import styled from "styled-components";
 
 export const WrapperStudents = styled.div`
   height: 780px;
-  padding-top: 80px;
+  padding: 80px 0;
+  margin-bottom: 80px;
 `;
 
 export const ContentCourses = styled.div`
@@ -23,6 +24,6 @@ export const ContentCourses = styled.div`
     }
   }
   .dropdown-menu {
-    width: 100%;;
+    width: 100%;
   }
 `;

@@ -7,10 +7,21 @@
   },
   "tableHeader": ["id do curso", "Nome do curso", "Creditos"],
   "subjectsOptions": {
-    "title":"Escolha a matéria que deseja matrícular",
+    "title": "Escolha a matéria que deseja matrícular",
     "button": {
       "type": "button",
       "text": "Adicionar"
     }
-  }
+  },
+  "headerTable": ["Nome da matéria", "Obrigatória", "Adicionar na lista"],
+  "items": [
+    {
+      "id": 1,
+      "name": "Matéria do curso"
+    },
+    {
+      "id": 2,
+      "name": "Todas as Matérias"
+    }
+  ]
 }

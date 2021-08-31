@@ -14,6 +14,8 @@ const Students = ({
   data2,
   titleSubject,
   buttonSubject,
+  headerTableSubject,
+  items,
 }) => {
   const [course, setCourse] = useState(initialState);
   return (
@@ -23,9 +25,11 @@ const Students = ({
         <Dropdown items={data} course={course} setCourse={setCourse} />
         <TableCourses tableHeader={tableHeader} course={course} />
         <TableSubjects
+          items={items}
           course={course}
           subjects={data2}
           title={titleSubject}
+          headerTableSubject={headerTableSubject}
           button={buttonSubject}
         />
       </S.ContentCourses>
