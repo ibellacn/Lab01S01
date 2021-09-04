@@ -27,3 +27,13 @@ export const ContentSecretaries = styled.div`
     width: 100%;
   }
 `;
+
+export const ContentCalendar = styled.div`
+  width: 100%;
+  max-width: 870px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  margin: 80px 0;
+`;

@@ -6,6 +6,7 @@ import Navbar from "components/Navbar";
 import header from "utils/data/header.json";
 
 import "bootstrap/dist/css/bootstrap.min.css";
+import "react-calendar/dist/Calendar.css";
 import GlobalStyle from "utils/style/globalStyle";
 
 const App = ({ Component, pageProps }) => {
