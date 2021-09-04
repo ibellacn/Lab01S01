@@ -1,0 +1,9 @@
+{
+  "title": "Área do Professor",
+  "subjects": [
+    {
+      "id": 1,
+      "nome": "Programação modular"
+    }
+  ]
+}
