@@ -1,7 +1,7 @@
 /* eslint-disable react/prop-types */
 import React, { useState } from "react";
 import Dropdown from "components/Dropdown";
-import TableCourses from "./TableCourses ";
+// import TableCourses from "./TableCourses ";
 import TableSubjects from "./TableSubjects";
 
 import * as S from "./styled";
@@ -9,7 +9,7 @@ import * as S from "./styled";
 const Students = ({
   title,
   initialState,
-  tableHeader,
+  // tableHeader,
   data,
   data2,
   titleSubject,
@@ -23,7 +23,7 @@ const Students = ({
       <S.ContentCourses>
         <h1>{title}</h1>
         <Dropdown items={data} course={course} setCourse={setCourse} />
-        <TableCourses tableHeader={tableHeader} course={course} />
+        {/* <TableCourses tableHeader={tableHeader} course={course} /> */}
         <TableSubjects
           items={items}
           course={course}
