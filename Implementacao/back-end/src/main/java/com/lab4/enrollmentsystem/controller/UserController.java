@@ -33,6 +33,20 @@ public class UserController {
             return new ResponseEntity<User>(HttpStatus.NOT_FOUND);
         }
     }
+
+    @GetMapping("/login")
+    public ResponseEntity<User> login(@RequestBody UserDTO userDTO) {
+        try {
+            if (userDTO.getEmail().isEmpty() && userDTO.getPassword().isEmpty()){
+                throw new NoSuchElementException();
+            }
+            User user = userService.login(userDTO.getEmail(), userDTO.getPassword());
+            return new ResponseEntity<User>(user, HttpStatus.OK);
+        } catch (NoSuchElementException e) {
+            return new ResponseEntity<User>(HttpStatus.NOT_FOUND);
+        }
+    }
+
     @PostMapping("/")
     public void add(@RequestBody UserDTO userDTO) {
         switch (userDTO.getType().toUpperCase()){
