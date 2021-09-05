@@ -1,0 +1,48 @@
+{
+  "teacher": {
+    "types": "Teacher",
+    "form": [
+      {
+        "type": "account",
+        "id":"account",
+        "field": "Nome"
+      },
+      {
+        "type": "email",
+        "id": "email",
+        "field": "Email"
+      },
+      {
+        "type": "password",
+        "id": "password",
+        "field": "Senha"
+      }
+    ],
+    "button": {
+      "text": "Cadastrar"
+    }
+  },
+  "student": {
+    "types": "Student",
+    "form":[
+      {
+        "type": "account",
+        "id":"account",
+        "field": "Nome"
+      },
+      {
+        "type": "email",
+        "id": "email",
+        "field": "Email"
+      },
+      {
+        "type": "password",
+        "id": "password",
+        "field": "Senha"
+      }
+    ],
+    "button": {
+      "text": "Cadastrar"
+    }
+  }
+}

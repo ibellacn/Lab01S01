@@ -1,7 +1,8 @@
 import styled from "styled-components";
 
 export const WrapperSecretaries = styled.div`
-  height: 780px;
+  height: 100%;
+  max-height: 1460px;
   padding: 80px 0;
   margin-bottom: 80px;
 `;
@@ -36,4 +37,23 @@ export const ContentCalendar = styled.div`
   justify-content: space-between;
   align-items: center;
   margin: 80px 0;
+`;
+
+export const WrapperDropdown = styled.div`
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  margin-bottom: 40px;
+`;
+
+export const WrapperSection  = styled.div`
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  form {
+    width: 80%;
+    button {
+      margin-top: 20px;
+    } 
+  }
 `;

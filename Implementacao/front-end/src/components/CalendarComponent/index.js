@@ -1,11 +1,21 @@
 /* eslint-disable react/prop-types */
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
+import Cookies from "js-cookie";
 import Calendar from "react-calendar";
-import * as S from "./styled";
-// import Cookies from "js-cookie";
 
-const CalendarComponent = ({ title }) => {
+import * as S from "./styled";
+
+const CalendarComponent = ({ title, stateCalendar }) => {
   const [value, onChange] = useState(new Date());
+
+  useEffect(() => {
+    if(stateCalendar === "initial") {
+      Cookies.set("INITIAL", value, { expires: 60 });
+    } 
+    if(stateCalendar === "final") {
+      Cookies.set("FINAL", value, { expires: 60 });
+    }
+  },[value, onChange])
 
   return (
     <S.WrapperCalendar>

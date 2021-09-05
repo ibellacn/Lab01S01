@@ -6,6 +6,23 @@ export const WrapperTeachers = styled.div`
   margin-bottom: 80px;
 `;
 
+export const WrapperTableHeader = styled.div`
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  border: 1px solid;
+`;
+
+export const HeaderTable = styled.div`
+  border-left: 1px solid;
+  border-right: 1px solid;
+  border-top: 1px solid;
+  width: 50%;
+  padding-left: 5px;
+  font-weight: bold;
+  font-size: 18px;
+`;
+
 export const ContentTeachers = styled.div`
   display: flex;
   flex-direction: column;
