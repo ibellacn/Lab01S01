@@ -22,23 +22,17 @@ export const LineHeader = styled.div`
 `;
 
 export const WrapperLogo = styled.div`
-  width: 160px;
+  width: 300px;
   text-align: center;
   font-size: 26px;
-  color: #1769aa;
+  color: #ffffff;
   cursor: pointer;
   margin-top: 5px;
-  :hover {
-    color: #ffffff;
-  }
 `;
 
 export const WrapperMenu = styled.div`
   font-size: 21px;
   a {
-    color: #1769aa;
-    :hover {
-      color: #ffffff;
-    }
+    color: #ffffff;
   }
 `;
