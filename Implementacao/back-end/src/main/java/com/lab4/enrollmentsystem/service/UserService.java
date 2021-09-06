@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
+import java.util.Iterator;
 import java.util.List;
 
 @Service
@@ -32,15 +33,31 @@ public class UserService {
     }
 
     public User login(String email, String password) {
-        User login = userRepository.login(email, password);
-        return login;
+        User user = null;
+
+        List<Object> response = userRepository.login(email, password);
+        Iterator itr = response.iterator();
+        while(itr.hasNext()){
+            Object[] obj = (Object[]) itr.next();
+            
+           user = new User(Integer.parseInt(String.valueOf(obj[0])), String.valueOf(obj[1]), 
+                    String.valueOf(obj[2]), String.valueOf(obj[3]), String.valueOf(obj[4]));
+        }
+        return user;
     }
 
     public void deleteUser(Integer id) {
         userRepository.deleteById(id);
     }
 
-    public Professor getProfessor(String cpf) {
-        return professorRepository.findByCpf(cpf);
+    public Professor getProfessorByCpf(String cpf) {
+        Professor professor = null;
+        List<Object> response = professorRepository.findByCpf(cpf);
+        Iterator itr = response.iterator();
+        while(itr.hasNext()){
+            Object[] obj = (Object[]) itr.next();
+            professor = new Professor(String.valueOf(obj[0]), String.valueOf(obj[1]));
+        }
+        return professor;
     }
 }
