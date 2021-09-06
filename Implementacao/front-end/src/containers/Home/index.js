@@ -5,7 +5,13 @@ import Login from "components/Login";
 const Home = ({ form }) => {
   return (
     <div>
-      <Login title={form.title} inputs={form.formData} button={form.button} />
+      <Login
+        title={form.title}
+        inputs={form.formData}
+        initialDropdown={form.initial}
+        dropdownOptions={form.dropdownOptions}
+        button={form.button}
+      />
     </div>
   );
 };

@@ -1,28 +1,35 @@
 /* eslint-disable react/prop-types */
 /* eslint-disable react/no-unescaped-entities */
-import React from "react";
+import React, { useState } from "react";
 import { Formik, Form } from "formik";
 import * as yup from "yup";
+import Dropdown from "components/Dropdown";
 import Button from "react-bootstrap/Button";
 import Input from "components/Input";
+import axios from "axios";
 
 import * as S from "./styled";
 
-const Login = ({ title, inputs, button }) => {
+const Login = ({ title, inputs, initialDropdown, dropdownOptions, button }) => {
+  const [options, setOption] = useState(initialDropdown);
   const InitialState = {
     email: "",
     password: "",
-    type: "",
   };
 
   const validationSchema = yup.object({
     email: yup.string().email("E-mail inválido").required("Campo obrigatório"),
     password: yup.string().required("Campo obrigatório"),
-    type: "",
   });
 
   const onSubmit = (values) => {
     console.log(values);
+    axios.get("/user/login", {
+      body: {
+        email: values.email,
+        password: values.password,
+      },
+    });
   };
 
   return (
@@ -43,6 +50,9 @@ const Login = ({ title, inputs, button }) => {
                 />
               </div>
             ))}
+            <S.WrapperForm>
+              <Dropdown items={dropdownOptions} course={options} setCourse={setOption} />
+            </S.WrapperForm>
             <Button variant="success" type={button.typeButton}>
               {button.text}
             </Button>
