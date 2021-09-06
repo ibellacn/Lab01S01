@@ -2,6 +2,8 @@ package com.lab4.enrollmentsystem.service;
 
 import com.lab4.enrollmentsystem.dto.SubjectOfferDTO;
 import com.lab4.enrollmentsystem.model.*;
+import com.lab4.enrollmentsystem.repository.ProfessorRepository;
+import com.lab4.enrollmentsystem.repository.SemesterRepository;
 import com.lab4.enrollmentsystem.repository.SubjectOfferRepository;
 import com.lab4.enrollmentsystem.repository.SubjectRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -9,6 +11,7 @@ import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
 import java.util.Collections;
+import java.util.Iterator;
 import java.util.List;
 
 @Service
@@ -20,8 +23,11 @@ public class SubjectService {
     @Autowired
     private SubjectOfferRepository subjectOfferRepository;
 
-    private UserService userService;
-    private SemesterService semesterService;
+    @Autowired
+    private SemesterRepository semesterRepository;
+
+    @Autowired
+    private ProfessorRepository professorRepository;
 
     public List<Subject> listAllSubject(){
         return subjectRepository.findAll();
@@ -48,9 +54,16 @@ public class SubjectService {
     }
 
     public void saveSubjectOffer(SubjectOfferDTO subjectOfferDTO) {
-        Professor professor = userService.getProfessor(subjectOfferDTO.getProfessorCpf());
-        Semester semester = semesterService.getSemester(subjectOfferDTO.getSemesterId());
+        Semester semester = semesterRepository.findById(subjectOfferDTO.getSemesterId()).get();
         Subject subject = getSubject(subjectOfferDTO.getSubjectId());
+
+        Professor professor = null;
+        List<Object> response = professorRepository.findByCpf(subjectOfferDTO.getProfessorCpf());
+        Iterator itr = response.iterator();
+        while(itr.hasNext()){
+            Object[] obj = (Object[]) itr.next();
+            professor = new Professor(String.valueOf(obj[0]), String.valueOf(obj[1]));
+        }
 
         SubjectOffer subjectOffer = new SubjectOffer(subjectOfferDTO.getId(), subjectOfferDTO.getScheduleCron(),
                 subjectOfferDTO.getStatus(), subject, professor, semester);

@@ -1,5 +1,7 @@
 package com.lab4.enrollmentsystem.model;
 
+import org.hibernate.annotations.Type;
+
 import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
@@ -9,7 +11,11 @@ import java.util.List;
 public class SubjectOffer {
     private Integer id;
     private String scheduleCron;
+
+    @Enumerated(javax.persistence.EnumType.STRING)
+    @Type(type = "com.lab4.enrollmentsystem.model.EnumSystemType")
     private String status;
+
     private Subject subject;
     private Professor professor;
     private Semester semester;
@@ -28,7 +34,18 @@ public class SubjectOffer {
         this.students = new ArrayList<>();
     }
 
+    public SubjectOffer(Integer id, String scheduleCron, String status, Integer subjectId, String professorCpf, Integer semesterId) {
+        this.id = id;
+        this.scheduleCron = scheduleCron;
+        this.status = status;
+        this.subject.setId(subjectId);
+        this.professor.setCpf(professorCpf);
+        this.semester.setId(semesterId);
+        this.students = new ArrayList<>();
+    }
+
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     public Integer getId() {
         return id;
     }
@@ -54,7 +71,7 @@ public class SubjectOffer {
     }
 
     @ManyToOne
-    @JoinColumn(name = "subject_id", nullable = false)
+    @JoinColumn(name = "SUBJECT_ID", nullable = false)
     public Subject getSubject() {
         return subject;
     }
@@ -64,7 +81,7 @@ public class SubjectOffer {
     }
 
     @ManyToOne
-    @JoinColumn(name = "professor_id", nullable = false)
+    @JoinColumn(name = "PROFESSOR_CPF", nullable = false)
     public Professor getProfessor() {
         return professor;
     }
@@ -74,7 +91,7 @@ public class SubjectOffer {
     }
 
     @ManyToOne
-    @JoinColumn(name = "semester_id", nullable = false)
+    @JoinColumn(name = "SEMESTER_ID", nullable = false)
     public Semester getSemester() {
         return semester;
     }
@@ -84,9 +101,9 @@ public class SubjectOffer {
     }
 
     @ManyToMany
-    @JoinTable(name="enrollment", joinColumns=
-            {@JoinColumn(name="subject_offer_id")}, inverseJoinColumns=
-            {@JoinColumn(name="student_cpf")})
+    @JoinTable(name="ENROLLMENT", joinColumns=
+            {@JoinColumn(name="SUBJECT_OFFER_ID")}, inverseJoinColumns=
+            {@JoinColumn(name="STUDENT_CPF")})
     public List<Student> getStudents() {
         return students;
     }

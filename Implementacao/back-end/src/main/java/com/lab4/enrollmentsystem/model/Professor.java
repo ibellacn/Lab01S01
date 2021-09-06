@@ -14,6 +14,11 @@ public class Professor extends User{
     public Professor() {
     }
 
+    public Professor(String cpf, String info) {
+        this.cpf = cpf;
+        this.info = info;
+    }
+
     public Professor(Integer id, String name, String email, String password, String type, String cpf, String info) {
         super(id, name, email, password, type);
         this.cpf = cpf;
