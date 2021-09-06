@@ -1,21 +1,42 @@
-import React, { useState } from "react";
+/* eslint-disable react/prop-types */
+import React from "react";
+import { Formik, Form } from "formik";
 
 import SearchIcon from "static/images/svg/ic-search.svg";
 
 import * as S from "./styled";
 
-const Search = () => {
-  const [search, setSearch] = useState();
-  console.log(search);
+const Search = ({ onSubmit, searchError }) => {
+  const InitialState = {
+    name: "",
+  };
+
   return (
-    <S.WrapperSearch>
-      <form>
-        <input type="text" placeholder="Procurar.." name="search" />
-        <button type="button" onClick={(e) => setSearch(e.target.value)}>
-          <SearchIcon />
-        </button>
-      </form>
-    </S.WrapperSearch>
+    <>
+      <Formik
+        initialValues={InitialState}
+        onSubmit={onSubmit}
+      >
+        {({values, handleChange, handleBlur }) => (
+          <S.WrapperSearch>
+            <Form>
+              <input
+                type="text"
+                name="name"
+                onChange={handleChange}
+                onBlur={handleBlur}
+                value={values.name}
+                placeholder="Procurar . . ."
+              />
+              <button type="submit">
+                <SearchIcon />
+              </button>
+            </Form>
+          </S.WrapperSearch>
+        )}
+      </Formik>
+      <p>{searchError}</p>
+    </>
   );
 };
 

@@ -1,3 +1,4 @@
+/* eslint-disable no-restricted-syntax */
 /* eslint-disable react/prop-types */
 import React, { useState } from "react";
 import Button from "react-bootstrap/Button";
@@ -13,6 +14,7 @@ const TableSubjects = ({ course, subjects, headerTableSubject, title, items, but
   const [newItemSubjectIsNotOptional, setNewItemSubjectIsNotOptional] = useState([]);
   const [itemSubjectIsOptional, setItemSubjectIsOptional] = useState([]);
   const [newItemSubjectIsOptional, setNewItemSubjectIsOptional] = useState([]);
+  const [listSubjects, setListSubject] = useState(subjects);
 
   const addToCart = (item) => {
     if (!item.isOptional) {
@@ -22,10 +24,9 @@ const TableSubjects = ({ course, subjects, headerTableSubject, title, items, but
         itemSubjectIsNotOptional.forEach((itemSubIsNotOptional) => {
           uniqueInCartIsNotOptional.add(itemSubIsNotOptional);
         });
-        if(newItemSubjectIsNotOptional <= 4) {
+        if (newItemSubjectIsNotOptional <= 4) {
           setNewItemSubjectIsNotOptional([...uniqueInCartIsNotOptional.values()]);
         }
-        
       }
     }
 
@@ -36,7 +37,7 @@ const TableSubjects = ({ course, subjects, headerTableSubject, title, items, but
         itemSubjectIsOptional.forEach((itemSubIsOptional) => {
           uniqueInCartIsOptional.add(itemSubIsOptional);
         });
-        if(newItemSubjectIsOptional <= 2) {
+        if (newItemSubjectIsOptional <= 2) {
           setNewItemSubjectIsOptional([...uniqueInCartIsOptional.values()]);
         }
       }
@@ -50,13 +51,13 @@ const TableSubjects = ({ course, subjects, headerTableSubject, title, items, but
         if (indexOfItemToRemove === -1) {
           return currentCart;
         }
-  
+
         return [
           ...currentCart.slice(0, indexOfItemToRemove),
           ...currentCart.slice(indexOfItemToRemove + 1),
         ];
       });
-    };
+    }
 
     if (item.isOptional) {
       setNewItemSubjectIsOptional((currentCart) => {
@@ -64,14 +65,26 @@ const TableSubjects = ({ course, subjects, headerTableSubject, title, items, but
         if (indexOfItemToRemove === -1) {
           return currentCart;
         }
-  
+
         return [
           ...currentCart.slice(0, indexOfItemToRemove),
           ...currentCart.slice(indexOfItemToRemove + 1),
         ];
       });
-    };
+    }
   };
+
+  const onSubmit = (values) => {
+    for (const item of listSubjects) {
+      if (values.name === item.name) {
+        setListSubject([item]);
+      }
+    }
+  };
+
+  const showAll = () => {
+    setListSubject(subjects);
+  }
 
   return (
     <>
@@ -85,7 +98,10 @@ const TableSubjects = ({ course, subjects, headerTableSubject, title, items, but
                   <S.WrapperDropdown>
                     <Dropdown items={items} course={subject} setCourse={setSubject} />
                   </S.WrapperDropdown>
-                  <Search />
+                  <Search onSubmit={onSubmit} />
+                  <Button variant="success" type={button.type} onClick={showAll}>
+                    Mostrar todos
+                  </Button>
                 </S.SelectItems>
                 {subject.id === 2 && (
                   <>
@@ -94,7 +110,7 @@ const TableSubjects = ({ course, subjects, headerTableSubject, title, items, but
                         <S.HeaderTable>{header}</S.HeaderTable>
                       ))}
                     </S.WrapperTableHeader>
-                    {subjects.map((itemSub) => (
+                    {listSubjects.map((itemSub) => (
                       <S.WrapperTable key={itemSub.id}>
                         <S.Table>{itemSub.name}</S.Table>
                         {itemSub.isOptional ? <S.Table>não</S.Table> : <S.Table>sim</S.Table>}
@@ -119,7 +135,6 @@ const TableSubjects = ({ course, subjects, headerTableSubject, title, items, but
                       <button type="button" onClick={() => removeFromCart(IsNotOptional)}>
                         <RemoveIcon />
                       </button>
-                      
                     </S.ItemsCard>
                   ))}
                 </S.Card>

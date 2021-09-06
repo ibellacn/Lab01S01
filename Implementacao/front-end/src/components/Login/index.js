@@ -6,17 +6,18 @@ import * as yup from "yup";
 import Dropdown from "components/Dropdown";
 import Button from "react-bootstrap/Button";
 import Input from "components/Input";
-import axios from "axios";
+import { useRouter } from "next/router";
 
 import * as S from "./styled";
 
 const Login = ({ title, inputs, initialDropdown, dropdownOptions, button }) => {
+  const router = useRouter();
+  
   const [options, setOption] = useState(initialDropdown);
   const InitialState = {
     email: "",
     password: "",
   };
-
   const validationSchema = yup.object({
     email: yup.string().email("E-mail inválido").required("Campo obrigatório"),
     password: yup.string().required("Campo obrigatório"),
@@ -24,12 +25,16 @@ const Login = ({ title, inputs, initialDropdown, dropdownOptions, button }) => {
 
   const onSubmit = (values) => {
     console.log(values);
-    axios.get("/user/login", {
-      body: {
-        email: values.email,
-        password: values.password,
-      },
-    });
+    if(options.type === "teacher") {
+      router.push("/professores");
+    }
+    if(options.type === "student") {
+      router.push("/alunos");
+    }
+    if(options.type === "secretarie") {
+      router.push("secretarias");
+    }
+    
   };
 
   return (

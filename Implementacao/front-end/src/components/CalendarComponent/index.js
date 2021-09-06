@@ -10,10 +10,10 @@ const CalendarComponent = ({ title, stateCalendar }) => {
 
   useEffect(() => {
     if(stateCalendar === "initial") {
-      Cookies.set("INITIAL", value, { expires: 60 });
+      Cookies.set("INITIAL", value.getTime(), { expires: 360 });
     } 
     if(stateCalendar === "final") {
-      Cookies.set("FINAL", value, { expires: 60 });
+      Cookies.set("FINAL", value.getTime(), { expires: 360 });
     }
   },[value, onChange])
 
