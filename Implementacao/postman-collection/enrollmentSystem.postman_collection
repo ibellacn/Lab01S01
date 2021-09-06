@@ -248,6 +248,36 @@
 						}
 					},
 					"response": []
+				},
+				{
+					"name": "addOffer",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"scheduleCron\": \"test\",\r\n    \"status\": \"ACTIVE\",\r\n    \"subjectId\": 1,\r\n    \"professorId\": 987354,\r\n    \"semesterId\": 2\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/subject/1/offer",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"subject",
+								"1",
+								"offer"
+							]
+						}
+					},
+					"response": []
 				}
 			]
 		},
@@ -485,6 +515,38 @@
 					"response": []
 				},
 				{
+					"name": "login",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"email\": \"test1@test.com\",\r\n    \"password\": \"123test\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/user/login",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"user",
+								"login"
+							]
+						}
+					},
+					"response": []
+				},
+				{
 					"name": "getAll",
 					"request": {
 						"method": "GET",
@@ -511,7 +573,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"name\": \"Maria\",\r\n    \"email\": \"test@test.com\",\r\n    \"password\": \"123test\",\r\n    \"type\": \"SECRETARY\"\r\n}",
+							"raw": "{\r\n    \"name\": \"Maria\",\r\n    \"email\": \"test1@test.com\",\r\n    \"password\": \"123test\",\r\n    \"type\": \"SECRETARY\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -519,7 +581,7 @@
 							}
 						},
 						"url": {
-							"raw": "http://localhost:8080/user/1",
+							"raw": "http://localhost:8080/user/5",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -527,7 +589,7 @@
 							"port": "8080",
 							"path": [
 								"user",
-								"1"
+								"5"
 							]
 						}
 					},
