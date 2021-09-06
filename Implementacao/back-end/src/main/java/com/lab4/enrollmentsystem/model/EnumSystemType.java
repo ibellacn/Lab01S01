@@ -8,7 +8,7 @@ import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import java.sql.Types;
 
-public class EnumUserType extends EnumType {
+public class EnumSystemType extends org.hibernate.type.EnumType {
     @Override
     public void nullSafeSet(PreparedStatement st, Object value, int index,
                             SharedSessionContractImplementor session)

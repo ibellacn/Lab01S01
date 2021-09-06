@@ -21,19 +21,15 @@ const Subjects = () => {
         return errors;
       }}
       onSubmit={(values, { setSubmitting }) => {
-        console.log(typeof values.toggle);
         setTimeout(() => {
           (async () => {
             await fetch(
               "http://localhost:8080/subject/",
               {
                 method: "POST",
-                mode: "no-cors",
                 headers: {
                   "Accept": "*/*",
                   "Content-Type": "application/json; charset=utf-8; application/*+json",
-                  // "Access-Control-Allow-Origin": "http://localhost:8080",
-                  // "Access-Control-Allow-Headers": "Origin, X-Requested-With, Content-Type, Accept",
                 },
                 body: JSON.stringify({
                   name: values.name,

@@ -14,6 +14,27 @@
       "placeholder": "Coloque sua senha"
     }
   ],
+  "initial": {
+    "id": 0,
+    "name": "Selecione o usuário"
+  },
+  "dropdownOptions": [
+    {
+      "id": 1,
+      "type": "teacher",
+      "name": "professor"
+    },
+    {
+      "id": 2,
+      "type": "student",
+      "name": "aluno"
+    },
+    {
+      "id": 3,
+      "type": "secretarie",
+      "name": "secretaria"
+    }
+  ],
   "button": {
     "typeButton": "submit",
     "text": "Entrar"

@@ -80,12 +80,39 @@ export const Table = styled.div`
   align-items: center;
 `;
 
-export const Card = styled.div`
+export const WrapperCard = styled.div`
   width: 40%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+`;
+
+export const Card = styled.div`
+  width: 100%;
   background-color: blanchedalmond;
   border-radius: 3px;
   box-shadow: 10px 5px 5px black;
   margin-left: 10px;
+  margin-bottom: 20px;
+  padding: 5px;
+  p {
+    font-size: 18px;
+    font-weight: bold;
+  }
+`;
+export const ItemsCard = styled.div`
+  background: #FFFFFF;
+  width: 100%;
+  border-radius: 10px;
+  max-width: 320px;
+  padding: 10px;
+  margin-bottom: 10px;
+  display: flex;
+  justify-content: space-between;
+  button {
+    border: none;
+    background: #FFFFFF;
+  }
 `;
 
 export const WrapperButton = styled.div`

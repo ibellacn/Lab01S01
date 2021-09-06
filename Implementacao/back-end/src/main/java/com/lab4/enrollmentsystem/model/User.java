@@ -6,15 +6,15 @@ import javax.persistence.*;
 
 @Entity
 @Table(name = "USER")
-@Inheritance(strategy = InheritanceType.JOINED)
+//@Inheritance(strategy = InheritanceType.JOINED)
 public class User {
     private Integer id;
     private String name;
     private String email;
     private String password;
 
-    @Enumerated(EnumType.STRING)
-    @Type(type = "com.lab4.enrollmentsystem.model.EnumUserType")
+    @Enumerated(javax.persistence.EnumType.STRING)
+    @Type(type = "com.lab4.enrollmentsystem.model.EnumSystemType")
     private String type;
 
     public User() {

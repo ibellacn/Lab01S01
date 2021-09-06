@@ -36,7 +36,50 @@ const FormUser = ({ types, formData, buttonData }) => {
   });
 
   const onSubmit = (values) => {
-    console.log(values);
+    setTimeout(() => {
+      if(types === "Student") {
+        (async () => {
+          await fetch(
+            "http://localhost:8080/user/",
+            {
+              method: "POST",
+              headers: {
+                "Accept": "*/*",
+                "Content-Type": "application/json; charset=utf-8; application/*+json",
+              },
+              body: JSON.stringify({
+                name: values.account,
+                email: values.email,
+                password: values.password,
+                type: values.type,
+                cpf: values.cpf,
+              }),
+            },
+          );
+        })();
+      } else {
+        (async () => {
+          await fetch(
+            "http://localhost:8080/user/",
+            {
+              method: "POST",
+              headers: {
+                "Accept": "*/*",
+                "Content-Type": "application/json; charset=utf-8; application/*+json",
+              },
+              body: JSON.stringify({
+                name: values.account,
+                email: values.email,
+                password: values.password,
+                type: values.type,
+                info: values.text,
+                cpf: values.cpf,
+              }),
+            },
+          );
+        })();
+      }
+    },500)
   };
 
   return (
